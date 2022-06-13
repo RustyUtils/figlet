@@ -2,7 +2,7 @@
 
 This is an application like Figlet, but minimalistic (i.e much less code).
 
-I am going to write it in C first and then try to transition into rust.
+and in rust
 
 # License
 
