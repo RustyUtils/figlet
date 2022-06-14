@@ -5,6 +5,7 @@ use std::env;
 //use std::string; // dont need it yet
 // files
 //exmaple #[path = "./command-line-args.rs"] mod commandlineargs;
+#[path = "./alphabet.rs"] mod alphabet;
 
 pub fn main() {
     // get command line arguments
@@ -40,7 +41,7 @@ pub fn main() {
         }
         else
         {
-            println!("hi");
+            alphabet::alphabet(arg1);
         }
     }
 }
