@@ -35,6 +35,7 @@ pub fn main() {
         let arg1 = &args[1]; // arg 1 can contain -h or etc or just the text to increase
         //let _arg2 = &args[2]; // arg 2 contains only after a modifier from arg1
         // check for -h or any other modifiers before just 
+        // make array of arguments based on the arg_lenthg
         if arg1.eq("-h") // if arg1 is equal to -h
         {
             println!("Testing this first");
