@@ -5,7 +5,7 @@ use std::env;
 //use std::string; // dont need it yet
 // files
 //exmaple #[path = "./command-line-args.rs"] mod commandlineargs;
-#[path = "./alphabet.rs"] mod alphabet;
+#[path = "./normal_alphabet.rs"] mod normal_alphabet;
 
 pub fn main() {
     // get command line arguments
@@ -39,9 +39,20 @@ pub fn main() {
         {
             println!("Testing this first");
         }
+        else if arg1.eq("-i")
+        {
+            // will make this italic
+            println!("Testing this second");
+        }
+        else if arg1.eq("-b")
+        {
+            // make this bolded
+            println!("Testing this third");
+        }
         else
         {
-            alphabet::alphabet(arg1);
+            // use the normal alphabet conversion into big letters
+            normal_alphabet::alphabet(arg1);
         }
     }
 }
