@@ -11,14 +11,49 @@ pub fn alphabet(inputstring: &str)
     let mut row5 = "".to_string();
     // for loop through the chars of the string
     // for the ascii text just use figlet as this is a figlet clone in rust
+    /* how to do it:
+            row0 = row0 + "";
+            row1 = row1 + "";
+            row2 = row2 + "";
+            row3 = row3 + "";
+            row4 = row4 + "";
+            row5 = row5 + "";
+    */
     for i in inputstring.chars()
     {
         // small case
         if i == 'a'
         {
+            /*
+  __ _
+ / _` |
+| (_| |
+ \__,_|
+      
+            */
+            row0 = row0 + "       ";
+            row1 = row1 + "  __ _ ";
+            row2 = row2 + " / _` |";
+            row3 = row3 + "| (_| |";
+            row4 = row4 + " \\__,_|";
+            row5 = row5 + "       ";
         }
         else if i == 'b'
         {
+            /*
+ _
+| |__
+| '_ \
+| |_) |
+|_.__/
+
+            */
+            row0 = row0 + " _     ";
+            row1 = row1 + "| |__  ";
+            row2 = row2 + "| '_ \\ ";
+            row3 = row3 + "| |_) |";
+            row4 = row4 + "|_.__/ ";
+            row5 = row5 + "       ";
         }
         else if i == 'c'
         {
@@ -172,6 +207,12 @@ pub fn alphabet(inputstring: &str)
         }
         else if i == ' '
         {
+            row0 = row0 + "  ";
+            row1 = row1 + "  ";
+            row2 = row2 + "  ";
+            row3 = row3 + "  ";
+            row4 = row4 + "  ";
+            row5 = row5 + "  ";
         }
         else
         {
@@ -179,4 +220,9 @@ pub fn alphabet(inputstring: &str)
         }
     }
     println!("{}", row0);
+    println!("{}", row1);
+    println!("{}", row2);
+    println!("{}", row3);
+    println!("{}", row4);
+    println!("{}", row5);
 }

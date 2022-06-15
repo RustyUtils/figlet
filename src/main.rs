@@ -10,6 +10,7 @@ use std::env;
 pub fn main() {
     // get command line arguments
     let args: Vec<String> = env::args().collect();
+    let arg_string: String; // combine all strings to make one complete string of arg (it is defined in the if else below as I have modifiers)
     // get the arg length
     let arg_length: u8 = args.len().try_into().unwrap(); // using unsigned as comand line args can go below 0
     // check if length of argument in less than 1 to make error
@@ -43,17 +44,23 @@ pub fn main() {
         else if arg1.eq("-i")
         {
             // will make this italic
-            println!("Testing this second");
+            arg_string = args[2..].join(" "); // combine all strings after ./biglet -i to make one complete string of arg
+            println!("{}", arg_string);
+            println!("Work in progress");
         }
         else if arg1.eq("-b")
         {
             // make this bolded
-            println!("Testing this third");
+            arg_string = args[2..].join(" "); // combine all strings after ./biglet -b to make one complete string of arg
+            println!("{}", arg_string);
+            println!("Work in progress");
         }
         else
         {
             // use the normal alphabet conversion into big letters
-            normal_alphabet::alphabet(arg1);
+            arg_string = args[1..].join(" "); // combine all strings after ./biglet to make one complete string of arg
+            println!("{}", arg_string);
+            normal_alphabet::alphabet(&arg_string);
         }
     }
 }
