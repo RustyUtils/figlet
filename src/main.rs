@@ -33,22 +33,20 @@ pub fn main() {
     else
     {
         // asign variables for the args
-        let arg1 = &args[1]; // arg 1 can contain -h or etc or just the text to increase
-        //let _arg2 = &args[2]; // arg 2 contains only after a modifier from arg1
+        // let arg1 = &args[1]; // arg 1 can contain -h or etc or just the text to increase. We can just use args[1]
         // check for -h or any other modifiers before just 
-        // make array of arguments based on the arg_lenthg
-        if arg1.eq("-h") // if arg1 is equal to -h
+        if args[1].eq("-h") // if arg1 is equal to -h
         {
             println!("Testing this first");
         }
-        else if arg1.eq("-i")
+        else if args[1].eq("-i")
         {
             // will make this italic
             arg_string = args[2..].join(" "); // combine all strings after ./biglet -i to make one complete string of arg
             println!("{}", arg_string);
             println!("Work in progress");
         }
-        else if arg1.eq("-b")
+        else if args[1].eq("-b")
         {
             // make this bolded
             arg_string = args[2..].join(" "); // combine all strings after ./biglet -b to make one complete string of arg
