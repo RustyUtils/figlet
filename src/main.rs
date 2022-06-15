@@ -17,7 +17,8 @@ pub fn main() {
     if !(arg_length > 1)
     {
         println!("Please enter only 1 or 2 arguments no more or less. You do not have an arg.");
-        println!("Usage: ./biglet -h or ./biglet _word_here_");
+        println!("Help: ./biglet -h or ./biglet --help");
+        println!("-----------------------");
         println!("Program made by Thamognya Kodi AGPL3.0-or-later");
         println!("Source Code: https://git.thamognya.com/Thamognya/BigLet or https://github.com/Thamognya/BigLet");
     }
@@ -67,9 +68,18 @@ pub fn main() {
         else
         {
             // use the normal alphabet conversion into big letters
+            /*
+            let i: u8 = ((arg_length % 4) + 4 ) % 4;
+            let j: u8 = arg_length - 4 * i;
+            for j in 1..(4 * i) // every 4 args should be cut into string (argument 1-4, 5-8, and so on)
+            {
+
+            }
+            */
             arg_string = args[1..].join(" "); // combine all strings after ./biglet to make one complete string of arg
             println!("{}", arg_string);
             normal_alphabet::alphabet(&arg_string);
+            
         }
     }
 }
