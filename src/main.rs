@@ -69,15 +69,30 @@ pub fn main() {
         {
             // use the normal alphabet conversion into big letters
             /*
+                How to make strings in psuedo code
+                int arg_mod_four = arg_length % 4
+                int array_string[];
+                for (i  = 0; i < arg_mod_four; i++)
+                {
+                    //1 - 4
+                    //5 - 8
+                    array_string[i] = args[(4i+1)..4(i + 1)].join(" ");
+                }
+                // arg_mod_four * 4 to arg_length
+                array_string[arg_mod_four + 1] = args[arg_mod_four*4 + 1..arg_length].join("")
+                for (j = 0; j < arg_mod_four + 1; j++)
+                {
+                    normal_alphabet::alphabet(&array_string[j]);
+                }
+             */
             let i: u8 = ((arg_length % 4) + 4 ) % 4;
             let j: u8 = arg_length - 4 * i;
             for j in 1..(4 * i) // every 4 args should be cut into string (argument 1-4, 5-8, and so on)
             {
-
             }
-            */
             arg_string = args[1..].join(" "); // combine all strings after ./biglet to make one complete string of arg
             println!("{}", arg_string);
+            normal_alphabet::alphabet(&arg_string);
             normal_alphabet::alphabet(&arg_string);
             
         }
