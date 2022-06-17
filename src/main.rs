@@ -7,14 +7,15 @@ use std::env;
 //exmaple #[path = "./command-line-args.rs"] mod commandlineargs;
 #[path = "./normal_alphabet.rs"] mod normal_alphabet;
 
-pub fn main() {
+pub fn main() 
+{
     // get command line arguments
-    let args: Vec<String> = env::args().collect();
-    let arg_string: String; // combine all strings to make one complete string of arg (it is defined in the if else below as I have modifiers)
-    // get the arg length
-    let arg_length: u8 = args.len().try_into().unwrap(); // using unsigned as comand line args can go below 0
+    let args: Vec<String> = env::args().skip(1).collect(); // skip ./biglet
+    let args_modifer: Vec<String> = env::args().skip(2).collect(); // skip ./biglet
+    let arg_length: u8 = args.len().try_into().unwrap();
+
     // check if length of argument in less than 1 to make error
-    if !(arg_length > 1)
+    if !(arg_length > 0)
     {
         println!("Please enter only 1 or 2 arguments no more or less. You do not have an arg.");
         println!("Help: ./biglet -h or ./biglet --help");
@@ -37,7 +38,7 @@ pub fn main() {
         // asign variables for the args
         // let arg1 = &args[1]; // arg 1 can contain -h or etc or just the text to increase. We can just use args[1]
         // check for -h or any other modifiers before just 
-        if args[1].eq("-h") || args[1].eq("--help") // if arg1 is equal to -h
+        if args[0].eq("-h") || args[0].eq("--help") // if arg1 is equal to -h
         {
             println!("USAGE: \n\t./biglet [options(optional)] [args]");
             println!("ARGS: \n\t<args>...");
@@ -51,54 +52,25 @@ pub fn main() {
             println!("Program made by Thamognya Kodi AGPL3.0-or-later");
             println!("Source Code: https://git.thamognya.com/Thamognya/BigLet or https://github.com/Thamognya/BigLet");
         }
-        else if args[1].eq("-i") || args[1].eq("--italic")
+        else if args[0].eq("-i") || args[0].eq("--italic")
         {
-            // will make this italic
-            arg_string = args[2..].join(" "); // combine all strings after ./biglet -i to make one complete string of arg
-            println!("{}", arg_string);
-            println!("Work in progress");
+            for chunk in args_modifer.chunks(4)
+            {
+                normal_alphabet::alphabet(&chunk.join(" "));
+            }
         }
-        else if args[1].eq("-b") || args[1].eq("--bold")
+        else if args[0].eq("-b") || args[0].eq("--bold")
         {
-            // make this bolded
-            arg_string = args[2..].join(" "); // combine all strings after ./biglet -b to make one complete string of arg
-            println!("{}", arg_string);
-            println!("Work in progress");
+            for chunk in args_modifer.chunks(4)
+            {
+                normal_alphabet::alphabet(&chunk.join(" "));
+            }
         }
         else
         {
-            // use the normal alphabet conversion into big letters
-            /*
-                How to make strings in psuedo code
-                int arg_mod_four = arg_length % 4
-                int array_string[];
-                for (i  = 0; i < arg_mod_four; i++)
-                {
-                    //1 - 4
-                    //5 - 8
-                    array_string[i] = args[(4i+1)..4(i + 1)].join(" ");
-                }
-                // arg_mod_four * 4 to arg_length
-                array_string[arg_mod_four + 1] = args[arg_mod_four*4 + 1..arg_length].join("")
-                for (j = 0; j < arg_mod_four + 1; j++)
-                {
-                    normal_alphabet::alphabet(&array_string[j]);
-                }
-             */
-            // fix this later
-            let mut arg_mod_four: u8 = ((arg_length % 4) + 4 ) % 4;
-            let mut array_string: [&str; (arg_mod_four + 1)];
-
-            for i in 0..arg_mod_four
+            for chunk in args.chunks(4)
             {
-                arg_string[i] = args[(4 * i + 1)..(4(i + 1))].join(" ");
-            }
-
-            array_string[arg_mod_four + 1] = args[(arg_mod_four * 4 + 1)..arg_length].join(" ");
-
-            for j in 0..(arg_mod_four + 1)
-            {
-                normal_alphabet::alphabet(&arg_string[j]);
+                normal_alphabet::alphabet(&chunk.join(" "));
             }
         }
     }
