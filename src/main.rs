@@ -11,7 +11,7 @@ pub fn main()
 {
     // get command line arguments
     let args: Vec<String> = env::args().skip(1).collect(); // skip ./biglet
-    let args_modifer: Vec<String> = env::args().skip(2).collect(); // skip ./biglet
+    let args_modifer: Vec<String> = env::args().skip(2).collect(); // skip ./biglet and -_modifier
     let arg_length: u8 = args.len().try_into().unwrap();
 
     // check if length of argument in less than 1 to make error
@@ -36,9 +36,9 @@ pub fn main()
     else
     {
         // asign variables for the args
-        // let arg1 = &args[1]; // arg 1 can contain -h or etc or just the text to increase. We can just use args[1]
+        let modifier: &str = &args[0]; // so dont have to call on args[0] multiple times
         // check for -h or any other modifiers before just 
-        if args[0].eq("-h") || args[0].eq("--help") // if arg1 is equal to -h
+        if modifier.eq("-h") || modifier.eq("--help") // if arg1 is equal to -h
         {
             println!("USAGE: \n\t./biglet [options(optional)] [args]");
             println!("ARGS: \n\t<args>...");
@@ -52,14 +52,14 @@ pub fn main()
             println!("Program made by Thamognya Kodi AGPL3.0-or-later");
             println!("Source Code: https://git.thamognya.com/Thamognya/BigLet or https://github.com/Thamognya/BigLet");
         }
-        else if args[0].eq("-i") || args[0].eq("--italic")
+        else if modifier.eq("-i") || modifier.eq("--italic")
         {
             for chunk in args_modifer.chunks(4)
             {
                 normal_alphabet::alphabet(&chunk.join(" "));
             }
         }
-        else if args[0].eq("-b") || args[0].eq("--bold")
+        else if modifier.eq("-b") || modifier.eq("--bold")
         {
             for chunk in args_modifer.chunks(4)
             {
