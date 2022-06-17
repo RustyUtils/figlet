@@ -57,6 +57,21 @@ pub fn alphabet(inputstring: &str)
         }
         else if i == 'c'
         {
+/*
+
+  ___
+ / __|
+| (__
+ \___|
+
+
+*/
+            row0 = row0 + "      ";
+            row1 = row1 + "  ___ ";
+            row2 = row2 + " / __|";
+            row3 = row3 + "| (__ ";
+            row4 = row4 + " \\___|";
+            row5 = row5 + "      ";
         }
         else if i == 'd'
         {
