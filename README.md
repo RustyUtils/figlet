@@ -4,6 +4,10 @@ This is an application like Figlet, but minimalistic (i.e much less code).
 
 and in rust
 
+# TODO
+
+Work on the other charecters later
+
 # License
 
 `SPDX-License-Identifier: AGPL-3.0-or-later`
